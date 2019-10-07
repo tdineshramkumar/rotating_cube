@@ -16,6 +16,7 @@ Following the keyboard shortcuts for rotating the cube.
 
 **A**/&#8592;, **D**/&#8594;, **W**/&#8593;,  **S**/&#8595;, **Q**/**\[**,  **E**/**\]**
 
+Also dragging the mouse over the simulation rotates the cube.
 
 ![Sample Image](cube.png)
 

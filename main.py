@@ -65,12 +65,32 @@ def if_draw_surface(surf):
 
 # Main simulation loop of pygame
 run = True
+# Indicates is mouse is being dragged (moved with a mouse key pressed)
+dragging = False
+
 while run:
     clock.tick(60)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+        # Rotating the cube using mouse movements
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # Obtains values relative to the previous call
+            # Initial call is ignored to setup reference
+            pygame.mouse.get_rel()
+            dragging = True
+        if event.type == pygame.MOUSEBUTTONUP:
+            dragging = False
+        if event.type == pygame.MOUSEMOTION:
+            if dragging:
+                # Rotate points based on how much mouse has moved.
+                # TODO: Later if possible move based on where mouse is.
+                x, y = pygame.mouse.get_rel()
+                for p in points:
+                    p.rotate_x_ip(-y)
+                    p.rotate_y_ip(x)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_x] or keys[pygame.K_c] or keys[pygame.K_ESCAPE]:
